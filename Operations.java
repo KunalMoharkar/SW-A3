@@ -1,3 +1,4 @@
+//Assignment 3
 package com.hubberspot.junit5;
 
 public class Operations {
@@ -36,4 +37,17 @@ public class Operations {
         // Given string is a palindrome 
         return true; 
     } 
+	
+	public boolean isOdd(int n)
+	{
+		if(n%2!=0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String returnThisString(String s)
+	{
+		return s;
+	}
 }
