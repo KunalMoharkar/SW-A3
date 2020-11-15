@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.mypackage.src.Operations;
+
 class TestExceptions {
 
 	 Operations newobj=new Operations();

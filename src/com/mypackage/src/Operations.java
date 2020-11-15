@@ -1,5 +1,5 @@
 //Assignment 3
-package com.hubberspot.junit5;
+package com.mypackage.src;
 
 public class Operations {
 	
@@ -50,4 +50,25 @@ public class Operations {
 	{
 		return s;
 	}
+	
+	//receives a string pair and returns the concatenated string
+	public String concatPair(StringPair p)
+	{	
+			String str = p.getFirst() + p.getSecond();
+			return str;
+	}
+		
+	//receives a string pair and swaps the first with second element
+	public void swapPair(StringPair p)
+	{
+		String first = p.getFirst();
+		String second = p.getSecond();
+			
+		//swap
+		p.setFirst(second);
+		p.setSecond(first);
+	}
+		
+	
+	
 }

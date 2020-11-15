@@ -3,6 +3,8 @@ package com.hubberspot.junit5;
 
 import org.junit.Test;
 
+import com.mypackage.src.Operations;
+
 import static org.junit.Assert.*;
 
 public class TestAssertions {

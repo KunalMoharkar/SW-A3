@@ -14,6 +14,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import com.mypackage.src.Operations;
+
 class ParameterizedTests {
 
 	Operations newobj=new Operations();
