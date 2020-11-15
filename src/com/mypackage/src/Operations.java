@@ -1,3 +1,4 @@
+//Assignment 3
 package com.mypackage.src;
 
 public class Operations {
@@ -20,7 +21,7 @@ public class Operations {
         // and the end of the string 
         int i = 0, j = str.length() - 1; 
   
-        // While there are characters to compare 
+        // While there are characters toc compare 
         while (i < j) { 
   
             // If there is a mismatch 
@@ -31,30 +32,43 @@ public class Operations {
             // decrement the other 
             i++; 
             j--; 
-     } 
+        } 
   
         // Given string is a palindrome 
         return true; 
     } 
 	
+	public boolean isOdd(int n)
+	{
+		if(n%2!=0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String returnThisString(String s)
+	{
+		return s;
+	}
+	
 	//receives a string pair and returns the concatenated string
 	public String concatPair(StringPair p)
 	{	
-		String str = p.getFirst() + p.getSecond();
-		return str;
+			String str = p.getFirst() + p.getSecond();
+			return str;
 	}
-	
+		
 	//receives a string pair and swaps the first with second element
 	public void swapPair(StringPair p)
 	{
 		String first = p.getFirst();
 		String second = p.getSecond();
-		
+			
 		//swap
 		p.setFirst(second);
 		p.setSecond(first);
 	}
-	
+		
 	
 	
 }
