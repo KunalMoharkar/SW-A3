@@ -1,7 +1,15 @@
 //Assignment 3
-package com.mypackage.src;
+//this class contains the main program logic for which test cases have been created
+package com.hubberspot.junit5;
+
+import java.util.List;
 
 public class Operations {
+	
+	enum Coffee{
+		ESPRESSO,
+		AMERICANO;
+	}
 	
 	public int parse(String s)
 	{
@@ -51,24 +59,41 @@ public class Operations {
 		return s;
 	}
 	
-	//receives a string pair and returns the concatenated string
-	public String concatPair(StringPair p)
-	{	
-			String str = p.getFirst() + p.getSecond();
-			return str;
-	}
-		
-	//receives a string pair and swaps the first with second element
-	public void swapPair(StringPair p)
+	public boolean isNullStr(String text)
 	{
-		String first = p.getFirst();
-		String second = p.getSecond();
-			
-		//swap
-		p.setFirst(second);
-		p.setSecond(first);
+		return (text == null || text.trim().isEmpty());
 	}
-		
 	
+	public boolean isnotNullCoffee(Coffee coffee)
+	{
+		return (coffee==Coffee.ESPRESSO || coffee==Coffee.AMERICANO);
+	}
 	
+	public int multiply(int a,int b)
+	{
+		return a*b;
+	}
+	
+	public boolean MultiArgMethodSource(String str, int num, List<String> list)
+	{
+		return (str.length()==5 && num >=1 && num <=2 && list.size()==2);
+	}
+	
+	//receives a string pair and returns the concatenated string
+		public String concatPair(StringPair p)
+		{	
+				String str = p.getFirst() + p.getSecond();
+				return str;
+		}
+			
+		//receives a string pair and swaps the first with second element
+		public void swapPair(StringPair p)
+		{
+			String first = p.getFirst();
+			String second = p.getSecond();
+				
+			//swap
+			p.setFirst(second);
+			p.setSecond(first);
+		}
 }
