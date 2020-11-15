@@ -1,9 +1,10 @@
 package com.hubberspot.junit5;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,37 +15,30 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import com.mypackage.src.Operations;
-
 class ParameterizedTests {
 
 	Operations newobj=new Operations();
-	enum Coffee{
-		ESPRESSO,
-		AMERICANO;
-	}
 	
 	@ParameterizedTest
 	@ValueSource(strings = { "racecar", "radar", "able was I ere I saw elba" })
-	void palindromes(String candidate) {
-		System.out.println("@ValueSource");
+	void palindromesTest(String candidate) {
+		System.out.println("@ValueSource arg="+candidate);
 	    assertTrue(newobj.isPalindrome(candidate));
 	}
 
 	@ParameterizedTest
 	@NullAndEmptySource
-	void nullEmptyAndBlankStrings(String text) {
-		System.out.println("@NullAndEmptySource");
-	    assertTrue(text == null || text.trim().isEmpty());
+	void nullEmptyAndBlankStringsTest(String text) {
+		System.out.println("@NullAndEmptySource arg="+text);
+	    assertTrue(newobj.isNullStr(text));
 	}
 	
 	@ParameterizedTest
-	@EnumSource(Coffee.class)
-	void nonNullCoffee(Coffee coffee)
+	@EnumSource(Operations.Coffee.class)
+	void nonNullCoffeeTest(Operations.Coffee coffee)
 	{
-		System.out.println("@EnumSource");
-		assertNotNull(coffee);
-		System.out.println("Coffee is not NULL");
+		System.out.println("@EnumSource arg="+coffee);
+		assertTrue(newobj.isnotNullCoffee(coffee));
 	}
 	
 	@ParameterizedTest
@@ -52,24 +46,23 @@ class ParameterizedTests {
 			"5, 3, 15",
 			"2, 3, 6"
 	})
-	void multiply(int a,int b,int c)
+	void multiplyTest(int a,int b,int c)
 	{
-		System.out.println("@CsvSource");
-		assertEquals(c, a*b);
+		System.out.println("@CsvSource arg: a="+a+",b="+b+",multiplication result="+c);
+		assertEquals(newobj.multiply(a, b),c);
 	}
 	
-	@ParameterizedTest
-    @MethodSource("sumProvider")
-    void sum(int a, int b, int sum) {
-		System.out.println("@MethodSource");
-        assertEquals(sum, a + b);
+    @ParameterizedTest
+    @MethodSource("stringIntAndListProvider")			//for complex arguments
+    void testWithMultiArgMethodSource(String str, int num, List<String> list) {
+    	System.out.println("@MethodSource arg: string="+str+" number="+num+" list="+list);
+    	assertTrue(newobj.MultiArgMethodSource(str, num, list));
     }
- 
-    private static Stream<Arguments> sumProvider() {
+    
+    static Stream<Arguments> stringIntAndListProvider() {	//factory method that creates the method parameters of the testWithMultiArgMethodSource() method
         return Stream.of(
-                Arguments.of(1, 1, 2),
-                Arguments.of(2, 3, 5)
+        		Arguments.of("apple", 1, Arrays.asList("a", "b")),
+        		Arguments.of("lemon", 2, Arrays.asList("x", "y"))
         );
     }
-
 }
